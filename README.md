@@ -5,3 +5,4 @@ For run is necessary:
 1) Install NodeJs
 2) cmd: npm install --save-dev @babel/register (in folder where is 'node_modules'-folder located).
 3) cmd: node server.js
+4) in google chrome link to 'localhost:3000'
