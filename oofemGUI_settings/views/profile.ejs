@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
+      
+    <div class="wrapper">
+
+        <!-- ----------------------- OKNO MENU     ----------------------------------------  -->
+        <div class="menu">menu
+            <button type="button" id="buttNastaveniProjektu">Nastavení projektu</button>
+        </div>
+        
+        <!-- ----------------------- OKNO HLAVICKA ----------------------------------------  -->
+        <div class="hlavicka">hlavicka
+            <p> upravit filty az se bude rozsirovat GUI</p>
+            <div id="error">
+                <div class="block" id="errorWidth"></div>
+                <div class="block" id="errorHeight"></div>
+            </div>
+        </div>
+
+        <!-- ----------------------- OKNO MERITKA ----------------------------------------  -->
+        <div class="meritka">meritka
+            <select class="selectMeritka">
+                <option value="meritko">Měřítko</option>
+                <option value="posun">Posun</option>
+            </select>
+            
+            <button type="button" id="buttPlus">+</button>
+            <button type="button" id="buttMinus">-</button>
+
+            <label for="meritkoO">Přiblížit/Oddálit měřítko o:</label>
+            <input type="text" id="meritkoO" name="meritkoO"><br><br>
+            
+            <br>
+            <br>
+            
+            <div class="meritkoZvlast">
+                <input type="checkbox" id="meritkoZvlast" name="meritkoZvlast" value="meritkoZvlast">
+                <label for="meritkoZvlast"> Uvažovat měřítko pro X a Y odděleně</label><br>
+            </div>
+            
+            <br>
+            
+            <form class="smery">
+                <input type="radio" id="smerX" name="smery" value="smerX">
+                <label for="smerX">směr X</label><br>
+                <input type="radio" id="smerY" name="smery" value="smerY">
+                <label for="smerY">směr Y</label><br>
+            </form>
+        </div>
+
+        <!-- ----------------------- HLAVNI POHLED     ----------------------------------------  -->
+        <div class="hlOkno">hlOkno
+            <canvas id="drawing"></canvas>
+        </div>
+
+        <!-- ----------------------- DETAIL     -----------------------------------------------  -->
+        <div class="detOkno">detail
+
+        </div>
+
+        <!-- ----------------------- VODOROVNY REZ -------------------------------------------   -->
+        <div class="vodRez">vod rez
+
+        </div>
+
+        <!-- ----------------------- SVISLY REZ -----------------------------------------------   -->
+        <div class="svisRez">svis rez
+
+        </div>
+    </div>
+
+    <form id="nastaveni-form" method="POST" action="/submitMenu">    
+
+        <!-- menu projektu -->
+        <!-- pamatuje si id a hodnotu -->
+        <input type="text" id="inputId" name="inputId">
+        <input type="text" id="inputValue" name="inputValue">
+
+        <input type="text" id="idZoom" name="idZoom">
+        <input type="text" id="valueZoom" name="valueZoom">
+
+        <!-- je treba si pamatovat, jake moznosti byly nastaveny pri zmene meritka -->
+        <!-- pamatuje si, jaka moznost byla zaskrtnuta - true/false -->
+
+        <input type="text" id="statusScaleUni" name="statusScaleUni">
+        <input type="text" id="statusScaleX" name="statusScaleX">
+        <input type="text" id="statusScaleY" name="statusScaleY">
+        <input type="text" id="statusShiftX" name="statusShiftX">
+        <input type="text" id="statusShiftY" name="statusShiftY">
+
+
+        <input type="submit" value="Potvrď">
+    </form>
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/settings/scriptRozvrzeni.js?1500"></script>
+
+    <!-- vykresli menu vlevo -->
+    <script src="js/main/vykresliMenu2.js"></script>
+
+    <!-- ovlada meritka na hlavnim panelu -->
+    <script src="./js/main/scriptMeritka.js"></script>
+
+ <!--
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/index.js"></script>
+    -->
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/vykresliGrafiku.js"></script>
+    
+</body>
+</html>
+
+

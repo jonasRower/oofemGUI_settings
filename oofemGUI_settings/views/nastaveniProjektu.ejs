@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+
+    <h3 class="options">Project options</h3>
+
+    <table>
+        <tr class="generalOptions">
+            <th class="generalOptions">Name of project</th>
+            <th class="generalOptions">Filter by domain</th>
+            <th class="generalOptions">Filter</th>
+            <th class="generalOptions">Show data project</th>
+        </tr>
+        <tr class="generalOptions">
+            <td class="generalOptions" id="tdProject"></td>
+            <td class="generalOptions"><input type="checkbox" id="filterCheck"></td>
+            <td class="generalOptions" id="tdDomain"></td>
+            <td class="generalOptions"><input type="checkbox" id="showDataCheck"></td>
+        </tr>
+    </table>
+    <button id=confirmProjectSettings>Potvrd zmeny Project Settings</button>
+
+
+    <br><br>
+
+    <div id="tableProject">
+
+    </div>
+
+    
+    <div class="tabulkaProjektData">
+    
+    </div>  
+
+    <br><br>
+    <h3 class="options">GUI options</h3>
+
+    <div class="chooseGUI">
+        <p>Please choose the layout of GUI:</p>
+        <input type="radio" class="chooseGUIRadio" id="hlPohled_bezDetailu" name="vyberGUI" value="hlPohled_bezDetailu">
+        <label for="hlPohled_bezDetailu">Main view</label><br>
+        <input type="radio" class="chooseGUIRadio" id="hlPohled_detail" name="vyberGUI" value="hlPohled_detail">
+        <label for="hlPohled_detail">Main view + detail view</label><br>
+        <input type="radio" class="chooseGUIRadio" id="hlPohled_rezy" name="vyberGUI" value="hlPohled_rezy">
+        <label for="hlPohled_rezy">Main view + section view</label>
+        <br>
+        <label>max width:</label>
+        <input type="text" id="maxWidth" value="">
+
+        <label>max height:</label>
+        <input type="text" id="maxHeight" value="">
+    </div>    
+
+    <!-- zde se zobrazuje rozvrzeni v nastaveni --> 
+    <table id="tableLayout">
+
+    </table>
+    <button id=confirmLayout>Potvrd zmeny v rozvzeni</button>
+
+
+    <!-- zde se zobrazuje nastaveni meritek --> 
+
+    <br><br>
+    <h3 class="options">Scales options</h3>
+
+    <table>
+        <tr class="scalesOptions">
+            <th class="scalesOptions">Scale type</th>
+            <th class="scalesOptions">Value default</th>
+            <th class="scalesOptions">Zoom in/out with value</th>
+            <th class="scalesOptions">Settings default</th>
+        </tr>
+        <tr class="scalesOptions">
+            <td class="scalesOptions">Scale uniform</td>
+            <td class="scalesOptions"><input type="text" class="ValueDefault" id="ScaleUniValueDefault"></td>
+            <td class="scalesOptions"><input type="text" class="ZoomInOut" id="ScaleUniZoomInOut"></td>
+            <td class="scalesOptions"><input type="checkbox" class="checkUniform" id="ScaleUniCheck" name="ScaleUniCheck" value="ScaleUniCheck"><label id="ScaleUniLabel">as default</label></td>
+        </tr>
+        <tr class="scalesOptions">
+            <td class="scalesOptions">Scale x-direction</td>
+            <td class="scalesOptions"><input type="text" class="ValueDefault" id="ScaleXValueDefault"></td>
+            <td class="scalesOptions"><input type="text" class="ZoomInOut" id="ScaleXZoomInOut"></td>
+            <td class="scalesOptions"><input type="radio" class="radioDirection" id="ScaleXRadio" name="radioScaleDirection" value="ScaleXRadio"><label id="ScaleXLabel">as default</label></td>
+        </tr>
+        <tr class="scalesOptions">
+            <td class="scalesOptions">Scale y-direction</td>
+            <td class="scalesOptions"><input type="text" class="ValueDefault" id="ScaleYValueDefault"></td>
+            <td class="scalesOptions"><input type="text" class="ZoomInOut" id="ScaleYZoomInOut"></td>
+            <td class="scalesOptions"><input type="radio" class="radioDirection" id="ScaleYRadio" name="radioScaleDirection" value="ScaleYRadio"><label id="ScaleYLabel">as default</label></td>
+        </tr>
+        <tr class="scalesOptions">
+            <td class="scalesOptions">Shift x-direction</td>
+            <td class="scalesOptions"><input type="text" class="ValueDefault" id="ShiftXValueDefault"></td>
+            <td class="scalesOptions"><input type="text" class="ZoomInOut" id="ShiftXZoomInOut"></td>
+            <td class="scalesOptions"><input type="radio" class="radioDirection" id="ShiftXRadio" name="radioShiftDirection" value="ShiftXRadio"><label id="ShiftXLabel">as default</label></td>
+        </tr>
+        <tr class="scalesOptions">
+            <td class="scalesOptions">Shift y-direction</td>
+            <td class="scalesOptions"><input type="text" class="ValueDefault" id="ShiftYValueDefault"></td>
+            <td class="scalesOptions"><input type="text" class="ZoomInOut" id="ShiftYZoomInOut"></td>
+            <td class="scalesOptions"><input type="radio" class="radioDirection" id="ShiftYRadio" name="radioShiftDirection" value="ShiftYRadio"><label id="ShiftYLabel">as default</label></td>
+        </tr>
+    </table>
+
+    <button id=confirmScales>Potvrd zmeny v tabulce meritek</button>
+
+    <br><br>
+    
+
+    <!-- submit formular pro odeslani dat na backend   --> 
+    <form id="novaTabulka-form" method="POST" action="/settings">
+
+    <!-- inputboxy pro predani dat - project settings --> 
+    <input type="text" id="projectSettings" name="projectSettings">
+
+    <!-- inputboxy pro predani dat - predava nastaveni rozvrzeni - vsechny 3 --> 
+    <input type="text" id="hlPohled_bezDetailu-layoutSizeSubmit" name="hlPohled_bezDetailu-Json">
+    <input type="text" id="hlPohled_detail-layoutSizeSubmit" name="hlPohled_detail-Json">
+    <input type="text" id="hlPohled_rezy-layoutSizeSubmit" name="hlPohled_rezy-Json">
+
+    <!-- inputboxy pro predani maximalnich rozmeru --> 
+    <input type="text" id="maxWidthSubmit" name="maxWidthSubmit">
+    <input type="text" id="maxHeightSubmit" name="maxHeightSubmit">
+
+    <!-- uklada aktualne vybrany radiobutton --> 
+    <input type="text" id="radioLayoutSubmit" name="radioLayoutSubmit">
+
+    <!-- uklada json s meritky --> 
+    <input type="text" id="scalesSubmit" name="scalesSubmit">
+
+    <!-- uklada checkCombo - tj. data, urcujici, ktere comboboxy se kontroluji 
+        data i obsahuji casy, kdy byla comba zmenena, podle toho se aktualizuje vzdy ten nejstarsi --> 
+    <input type="text" id="checkComboSubmit" name="checkComboSubmit">    
+
+
+    <footer>
+        <br><br>
+        <input type="submit" value="Potvrď">
+    </footer>
+        
+    </form> 
+
+    <h3>Je rozdělané automatické dopočítávání % v comboboxech, není doladěno, někdy ?? v budoucnu dodělat??</h3>
+    <h2>Ještě zde bude nějaké nastavení na písmo, barvu grafu, dělení hřebene, apod</h2>
+    <p>testovací projekt je umístěn na:</p>
+    <p>C:\Users\jonas\OneDrive\Dokumenty\JAVASCRIPT\NODEJS\YOUTUBE - SOCKETS\testX\GridNodeJs</p>
+
+
+    
+    <script src="./js/settings/projectSettingsGeneral.js"></script>
+    <!--
+    <script src="./js/nastaveniProjektu.js"></script>
+    -->    
+    <script src="./js/settings/nastaveniProjektuLayout.js?1500"></script>
+    <script src="./js/settings/nastaveniProjektuScales.js"></script>
+    <!--
+    <script src="./js/nastaveniProjektuCheckCombo.js?1500"></script>
+    -->
+
+    <link rel="stylesheet" href="./css/styleNastaveniProjektu.css">
+    <link rel="stylesheet" href="./css/styleRozvrzeniGUI.css">
+    <link rel="stylesheet" href="./css/styleScales.css">
+    
+
+</body>
+</html>
